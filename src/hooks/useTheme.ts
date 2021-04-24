@@ -6,11 +6,16 @@ type State = {
 
 type Functions = {
   setDark: () => void;
+  setLight: () => void;
 }
 
 type Actions =
   | {
     type: 'SET_DARK';
+    payload: boolean;
+  }
+  | {
+    type: 'SET_LIGHT';
     payload: boolean;
   };
 
@@ -21,6 +26,11 @@ const initialState = {
 const reducer = (state: State, action: Actions) => {
   switch (action.type) {
     case "SET_DARK":
+      return {
+        dark: action.payload,
+      };
+
+    case "SET_LIGHT":
       return {
         dark: action.payload,
       };
@@ -41,6 +51,12 @@ export const useTheme = () => {
           type: 'SET_DARK',
           payload: true
         });
+      },
+      setLight: () => {
+        dispatch({
+          type: 'SET_LIGHT',
+          payload: false
+        });
       }
     },
   };
@@ -50,6 +66,7 @@ export const ThemeContext = createContext<{ state: State, actions: Functions }>(
   state: initialState,
   actions: {
     setDark: () => { },
+    setLight: () => { },
   },
 });
 

@@ -6,6 +6,8 @@ type Props = {
   error?: boolean;
 };
 
+const Wrapper = styled.div``;
+
 const Input = styled.input<Props>`
   width: ${(props) => `${props.width}px`};
   height: ${(props) => `${props.height}px`};
@@ -31,7 +33,7 @@ const Error = styled.p`
 `;
 
 type LabelProps = {
-  error?: boolean;
+  darkMode?: boolean;
 };
 
 const Label = styled.p<LabelProps>`
@@ -39,7 +41,7 @@ const Label = styled.p<LabelProps>`
   font-weight: 400;
   font-size: 16px;
   font-weight: bold;
-  color: ${(props) => (props.error ? "#eb5757" : "#333237")};
+  color: ${(props) => (props.darkMode ? "#FFFFFF" : "#333237")};
   margin: 0 0 8px 0;
 `;
 
@@ -48,16 +50,23 @@ type TextfieldProps = {
   height: string;
   error?: string;
   label?: string;
+  darkMode?: boolean;
 };
 
-export const Textfield = ({ label, error, width, height }: TextfieldProps) => {
+export const Textfield = ({
+  label,
+  error,
+  width,
+  height,
+  darkMode,
+}: TextfieldProps) => {
   return (
-    <>
-      {label && <Label error={!!error}>{label}</Label>}
+    <Wrapper>
+      {label && <Label darkMode={darkMode}>{label}</Label>}
 
       <Input width={width} height={height} error={!!error} />
 
       {error && <Error>{error}</Error>}
-    </>
+    </Wrapper>
   );
 };
