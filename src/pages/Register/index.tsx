@@ -14,7 +14,7 @@ import {
 import social from "../../assets/social-media.png";
 import { useThemeContext } from "../../hooks/useTheme";
 
-export const Login = () => {
+export const Register = () => {
   const { state } = useThemeContext();
 
   return (
@@ -24,7 +24,13 @@ export const Login = () => {
       </IconContainer>
       <FormContainer darkMode={state.dark}>
         <Form>
-          <Title darkMode={state.dark}>Sign In</Title>
+          <Title darkMode={state.dark}>Sign Up</Title>
+          <Textfield
+            label="Name"
+            width="250"
+            height="52"
+            darkMode={state.dark}
+          />
           <Textfield
             label="Email"
             width="250"
@@ -38,11 +44,11 @@ export const Login = () => {
             darkMode={state.dark}
           />
           <Container>
-            <Text darkMode={state.dark}>Don't have account ?</Text>
-            <BlueLink to="/register">Sign up</BlueLink>
+            <Text darkMode={state.dark}>Already have account ?</Text>
+            <BlueLink to="/">Sign in</BlueLink>
           </Container>
           <Button width="250" height="52" font="16">
-            Sign In
+            Sign Up
           </Button>
         </Form>
       </FormContainer>
@@ -51,4 +57,4 @@ export const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
