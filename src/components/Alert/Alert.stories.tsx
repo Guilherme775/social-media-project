@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Alert } from "./index";
+import { AlertStorybook } from "./index";
 
 export default {
   title: "Alert",
 };
 
-export const Success = () => <Alert>Atauine</Alert>;
+export const Success = () => <AlertStorybook>Atauine</AlertStorybook>;
 
-export const Danger = () => <Alert danger>Piriri</Alert>;
+export const Danger = () => <AlertStorybook danger>Piriri</AlertStorybook>;
