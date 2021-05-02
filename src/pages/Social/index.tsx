@@ -8,6 +8,8 @@ import Cookie from "js-cookie";
 import { useLazyLoadQuery } from "react-relay/hooks";
 import UserQuery from "../../operations/UserQuery";
 import { UserQuery as UserQueryTypes } from "../../operations/__generated__/UserQuery.graphql";
+import TweetsQuery from "../../operations/TweetsQuery";
+import { TweetsQuery as TweetsQueryTypes } from "../../operations/__generated__/TweetsQuery.graphql";
 
 type Params = {
   id: string;
@@ -27,10 +29,14 @@ export const Social = () => {
     id: id,
   });
 
+  const data = useLazyLoadQuery<TweetsQueryTypes>(TweetsQuery, {
+    first: 2,
+  });
+
   return (
     <Wrapper>
       <Infos user={user} />
-      <Feed />
+      <Feed data={data} />
       <ThemeSwitcher />
     </Wrapper>
   );

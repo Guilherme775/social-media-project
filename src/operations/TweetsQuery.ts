@@ -5,7 +5,7 @@ export default graphql`
         tweets(first: $first) {
             edges {
                 node {
-                    ...TweetsFragment_Feed
+                    ...TweetsFragment_Posts
                 }
             }
         }

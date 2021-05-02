@@ -11,7 +11,7 @@ export type TweetsQueryResponse = {
     readonly tweets: {
         readonly edges: ReadonlyArray<{
             readonly node: {
-                readonly " $fragmentRefs": FragmentRefs<"TweetsFragment_Feed">;
+                readonly " $fragmentRefs": FragmentRefs<"TweetsFragment_Posts">;
             };
         }>;
     };
@@ -30,14 +30,14 @@ query TweetsQuery(
   tweets(first: $first) {
     edges {
       node {
-        ...TweetsFragment_Feed
+        ...TweetsFragment_Posts
         id
       }
     }
   }
 }
 
-fragment TweetsFragment_Feed on Tweet {
+fragment TweetsFragment_Posts on Tweet {
   id
   author {
     name
@@ -103,7 +103,7 @@ return {
                   {
                     "args": null,
                     "kind": "FragmentSpread",
-                    "name": "TweetsFragment_Feed"
+                    "name": "TweetsFragment_Posts"
                   }
                 ],
                 "storageKey": null
@@ -187,14 +187,14 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1b5ea77d5a195e99475a60a6f75479ca",
+    "cacheID": "4db6eaa1014088e5fb05149ff1b07aa8",
     "id": null,
     "metadata": {},
     "name": "TweetsQuery",
     "operationKind": "query",
-    "text": "query TweetsQuery(\n  $first: Float!\n) {\n  tweets(first: $first) {\n    edges {\n      node {\n        ...TweetsFragment_Feed\n        id\n      }\n    }\n  }\n}\n\nfragment TweetsFragment_Feed on Tweet {\n  id\n  author {\n    name\n    id\n  }\n  description\n}\n"
+    "text": "query TweetsQuery(\n  $first: Float!\n) {\n  tweets(first: $first) {\n    edges {\n      node {\n        ...TweetsFragment_Posts\n        id\n      }\n    }\n  }\n}\n\nfragment TweetsFragment_Posts on Tweet {\n  id\n  author {\n    name\n    id\n  }\n  description\n}\n"
   }
 };
 })();
-(node as any).hash = '702498c9f15ce51d207a473417887b13';
+(node as any).hash = 'c043bee731ea08f4b6c70e47b7d8da38';
 export default node;

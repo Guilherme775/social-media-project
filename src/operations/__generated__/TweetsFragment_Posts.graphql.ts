@@ -4,18 +4,18 @@
 
 import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
-export type TweetsFragment_Feed = {
+export type TweetsFragment_Posts = {
     readonly id: string;
     readonly author: {
         readonly name: string | null;
     } | null;
     readonly description: string;
-    readonly " $refType": "TweetsFragment_Feed";
+    readonly " $refType": "TweetsFragment_Posts";
 };
-export type TweetsFragment_Feed$data = TweetsFragment_Feed;
-export type TweetsFragment_Feed$key = {
-    readonly " $data"?: TweetsFragment_Feed$data;
-    readonly " $fragmentRefs": FragmentRefs<"TweetsFragment_Feed">;
+export type TweetsFragment_Posts$data = TweetsFragment_Posts;
+export type TweetsFragment_Posts$key = {
+    readonly " $data"?: TweetsFragment_Posts$data;
+    readonly " $fragmentRefs": FragmentRefs<"TweetsFragment_Posts">;
 };
 
 
@@ -24,7 +24,7 @@ const node: ReaderFragment = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "TweetsFragment_Feed",
+  "name": "TweetsFragment_Posts",
   "selections": [
     {
       "alias": null,
@@ -62,5 +62,5 @@ const node: ReaderFragment = {
   "type": "Tweet",
   "abstractKey": null
 };
-(node as any).hash = 'd6bff64c9bd88b5edbfe447478a21c6a';
+(node as any).hash = 'a7e52bf2a9a27c0ddc59524c236c7e71';
 export default node;

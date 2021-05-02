@@ -15,10 +15,40 @@ import {
 } from "./styles";
 import { Button } from "../../../components";
 import { useThemeContext } from "../../../hooks/useTheme";
+import { useFragment } from "react-relay/hooks";
+import { TweetsQueryResponse } from "../../../operations/__generated__/TweetsQuery.graphql";
+import TweetsFragment from "../../../operations/TweetsFragment";
+import { TweetsFragment_Posts$key } from "../../../operations/__generated__/TweetsFragment_Posts.graphql";
 
-export const Feed = () => {
+type Props = {
+  node: TweetsFragment_Posts$key;
+};
+
+const Posts = ({ node }: Props) => {
   const { state } = useThemeContext();
-  const posts = [0, 1];
+
+  const { id, author, description } = useFragment<TweetsFragment_Posts$key>(
+    TweetsFragment,
+    node
+  );
+
+  return (
+    <PostWrapper key={id}>
+      <PostHeader>
+        <DarkPeopleIcon darkMode={state.dark} />
+        <Name darkMode={state.dark}>{author?.name}</Name>
+      </PostHeader>
+      <Post darkMode={state.dark}>{description}</Post>
+    </PostWrapper>
+  );
+};
+
+type QueryResponse = {
+  data: TweetsQueryResponse;
+};
+
+export const Feed = ({ data }: QueryResponse) => {
+  const { state } = useThemeContext();
 
   return (
     <FeedWrapper darkMode={state.dark}>
@@ -33,17 +63,8 @@ export const Feed = () => {
         </Button>
       </SubmitWrapper>
       <Title darkMode={state.dark}>Posts</Title>
-      {posts.map((post) => (
-        <PostWrapper key={post}>
-          <PostHeader>
-            <DarkPeopleIcon darkMode={state.dark} />
-            <Name darkMode={state.dark}>Thomas Geci</Name>
-          </PostHeader>
-          <Post darkMode={state.dark}>
-            lorem ipsum, ashdsauiash ashdsauiash ashdsauiashashdsauiash
-            ashdsauiash ashdsauiash ashdsauiash.
-          </Post>
-        </PostWrapper>
+      {data.tweets.edges.map((post) => (
+        <Posts node={post.node} />
       ))}
       <ButtonsWrapper>
         <Button width="80" height="32" font="16">
