@@ -6,11 +6,12 @@ import { ThemeProvider } from "./providers/ThemeProvider";
 import { AlertsProvider } from "./providers/AlertsProvider";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { Routes } from "./routes";
+import { Loader } from "./components/Loader";
 
 function App() {
   return (
     <RelayEnvironmentProvider environment={env}>
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Loader />}>
         <ErrorBoundary>
           <ThemeProvider>
             <AlertsProvider>
