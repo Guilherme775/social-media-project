@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Textfield, Button, ThemeSwitcher } from "../../components";
 import {
   Wrapper,
@@ -35,6 +36,7 @@ const schema = Yup.object().shape({
 export const Login = () => {
   const { state } = useThemeContext();
   const { actions } = useAlertsContext();
+  const history = useHistory();
 
   const {
     handleSubmit,
@@ -54,7 +56,7 @@ export const Login = () => {
       },
       onCompleted(data) {
         Cookie.set("token", data.signIn.token);
-        actions.addSuccessAlert("Login realizado com sucesso!");
+        history.push("/feed");
       },
       onError() {
         actions.addDangerAlert("Credencias incorretas");
