@@ -56,7 +56,7 @@ export const Login = () => {
       },
       onCompleted(data) {
         Cookie.set("token", data.signIn.token);
-        history.push("/feed");
+        history.push(`/feed/${data.signIn.user.id}`);
       },
       onError() {
         actions.addDangerAlert("Credencias incorretas");

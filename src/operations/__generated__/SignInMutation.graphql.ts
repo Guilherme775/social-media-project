@@ -10,6 +10,9 @@ export type SignInMutationVariables = {
 export type SignInMutationResponse = {
     readonly signIn: {
         readonly token: string;
+        readonly user: {
+            readonly id: string;
+        };
     };
 };
 export type SignInMutation = {
@@ -26,6 +29,9 @@ mutation SignInMutation(
 ) {
   signIn(email: $email, password: $password) {
     token
+    user {
+      id
+    }
   }
 }
 */
@@ -69,6 +75,24 @@ v1 = [
         "kind": "ScalarField",
         "name": "token",
         "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "concreteType": "User",
+        "kind": "LinkedField",
+        "name": "user",
+        "plural": false,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          }
+        ],
+        "storageKey": null
       }
     ],
     "storageKey": null
@@ -92,14 +116,14 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "86913993662f827b0a995c31cea3ab27",
+    "cacheID": "7d25e1c9c4f123f1887c094abaa4f4eb",
     "id": null,
     "metadata": {},
     "name": "SignInMutation",
     "operationKind": "mutation",
-    "text": "mutation SignInMutation(\n  $email: String!\n  $password: String!\n) {\n  signIn(email: $email, password: $password) {\n    token\n  }\n}\n"
+    "text": "mutation SignInMutation(\n  $email: String!\n  $password: String!\n) {\n  signIn(email: $email, password: $password) {\n    token\n    user {\n      id\n    }\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'd794638b18525fe90dc00d87bfb56419';
+(node as any).hash = '668fb7fecca26a6424229713c3ef0a44';
 export default node;
