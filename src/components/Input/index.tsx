@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -45,13 +46,14 @@ const Label = styled.p<LabelProps>`
   margin: 0 0 8px 0;
 `;
 
-type TextfieldProps = {
+interface TextfieldProps extends InputHTMLAttributes<HTMLInputElement> {
+  name?: string;
   width: string;
   height: string;
   error?: string;
   label?: string;
   darkMode?: boolean;
-};
+}
 
 export const Textfield = ({
   label,
@@ -59,12 +61,13 @@ export const Textfield = ({
   width,
   height,
   darkMode,
+  ...rest
 }: TextfieldProps) => {
   return (
     <Wrapper>
       {label && <Label darkMode={darkMode}>{label}</Label>}
 
-      <Input width={width} height={height} error={!!error} />
+      <Input {...rest} width={width} height={height} error={!!error} />
 
       {error && <Error>{error}</Error>}
     </Wrapper>
