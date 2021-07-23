@@ -42,7 +42,7 @@ const Label = styled.p<LabelProps>`
   font-weight: 400;
   font-size: 16px;
   font-weight: bold;
-  color: ${(props) => (props.darkMode ? "#FFFFFF" : "#333237")};
+  color: ${({ theme }) => theme.text};
   margin: 0 0 8px 0;
 `;
 

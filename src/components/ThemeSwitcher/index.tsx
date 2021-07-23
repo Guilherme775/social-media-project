@@ -1,18 +1,16 @@
 import React from "react";
 import { Wrapper } from "./styles";
 import { SunIcon, MoonIcon } from "../Icons";
-import { useThemeContext } from "../../hooks/useTheme";
 
-export const ThemeSwitcher = () => {
-  const { state, actions } = useThemeContext();
+type Props = {
+  theme: boolean;
+  action: () => void;
+};
 
+export const ThemeSwitcher = ({ theme, action }: Props) => {
   return (
     <Wrapper>
-      {state.dark ? (
-        <SunIcon onClick={actions.setLight} />
-      ) : (
-        <MoonIcon onClick={actions.setDark} />
-      )}
+      {theme ? <SunIcon onClick={action} /> : <MoonIcon onClick={action} />}
     </Wrapper>
   );
 };

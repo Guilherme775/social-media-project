@@ -30,3 +30,19 @@ export const GlobalStyle = createGlobalStyle`
         --sm: 12px;
     }
 `;
+
+export const lightTheme = {
+    title: '',
+    text: '#333237',
+    background: '#FFFFFF',
+    input: '',
+    wrapper: '#FFFFFF',
+}
+
+export const darkTheme = {
+    title: '#FFFFFF',
+    text: '#FFFFFF',
+    background: '#020024',
+    input: '#020024',
+    wrapper: '#020024',
+}

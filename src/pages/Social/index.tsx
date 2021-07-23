@@ -3,7 +3,6 @@ import { useHistory, useParams } from "react-router-dom";
 import { Wrapper } from "./styles";
 import { Infos } from "./Infos";
 import { Feed } from "./Feed";
-import { ThemeSwitcher } from "../../components";
 import Cookie from "js-cookie";
 import { useLazyLoadQuery } from "react-relay/hooks";
 import UserQuery from "../../operations/UserQuery";
@@ -37,7 +36,6 @@ export const Social = () => {
     <Wrapper>
       <Infos user={user} />
       <Feed data={data} />
-      <ThemeSwitcher />
     </Wrapper>
   );
 };

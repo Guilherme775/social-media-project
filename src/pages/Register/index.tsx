@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Textfield, Button, ThemeSwitcher } from "../../components";
+import { Textfield, Button } from "../../components";
 import {
   Wrapper,
   IconContainer,
@@ -13,7 +13,6 @@ import {
   BlueLink,
 } from "./styles";
 import social from "../../assets/social-media.png";
-import { useThemeContext } from "../../hooks/useTheme";
 import { useAlertsContext } from "../../utils/useAlerts";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -35,7 +34,6 @@ const schema = Yup.object().shape({
 });
 
 export const Register = () => {
-  const { state } = useThemeContext();
   const { actions } = useAlertsContext();
   const history = useHistory();
 
@@ -71,9 +69,9 @@ export const Register = () => {
       <IconContainer>
         <Image src={social} alt="social-media" />
       </IconContainer>
-      <FormContainer darkMode={state.dark}>
+      <FormContainer>
         <Form>
-          <Title darkMode={state.dark}>Sign Up</Title>
+          <Title>Sign Up</Title>
           <Textfield
             label="Name"
             name="name"
@@ -81,7 +79,6 @@ export const Register = () => {
             error={errors.name?.message}
             width="250"
             height="52"
-            darkMode={state.dark}
           />
           <Textfield
             label="Email"
@@ -90,7 +87,6 @@ export const Register = () => {
             error={errors.email?.message}
             width="250"
             height="52"
-            darkMode={state.dark}
           />
           <Textfield
             label="Password"
@@ -99,10 +95,9 @@ export const Register = () => {
             error={errors.password?.message}
             width="250"
             height="52"
-            darkMode={state.dark}
           />
           <Container>
-            <Text darkMode={state.dark}>Already have account ?</Text>
+            <Text>Already have account ?</Text>
             <BlueLink to="/">Sign in</BlueLink>
           </Container>
           <Button
@@ -115,7 +110,6 @@ export const Register = () => {
           </Button>
         </Form>
       </FormContainer>
-      <ThemeSwitcher />
     </Wrapper>
   );
 };

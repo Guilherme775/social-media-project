@@ -14,7 +14,6 @@ import {
   ButtonsWrapper,
 } from "./styles";
 import { Button } from "../../../components";
-import { useThemeContext } from "../../../hooks/useTheme";
 import { useFragment } from "react-relay/hooks";
 import { TweetsQueryResponse } from "../../../operations/__generated__/TweetsQuery.graphql";
 import TweetsFragment from "../../../operations/TweetsFragment";
@@ -25,8 +24,6 @@ type Props = {
 };
 
 const Posts = ({ node }: Props) => {
-  const { state } = useThemeContext();
-
   const { id, author, description } = useFragment<TweetsFragment_Posts$key>(
     TweetsFragment,
     node
@@ -35,10 +32,10 @@ const Posts = ({ node }: Props) => {
   return (
     <PostWrapper key={id}>
       <PostHeader>
-        <DarkPeopleIcon darkMode={state.dark} />
-        <Name darkMode={state.dark}>{author?.name}</Name>
+        <DarkPeopleIcon />
+        <Name>{author?.name}</Name>
       </PostHeader>
-      <Post darkMode={state.dark}>{description}</Post>
+      <Post>{description}</Post>
     </PostWrapper>
   );
 };
@@ -48,21 +45,19 @@ type QueryResponse = {
 };
 
 export const Feed = ({ data }: QueryResponse) => {
-  const { state } = useThemeContext();
-
   return (
-    <FeedWrapper darkMode={state.dark}>
-      <Title darkMode={state.dark}>Make Post</Title>
+    <FeedWrapper>
+      <Title>Make Post</Title>
       <InputWrapper>
-        <PostIcon darkMode={state.dark} />
-        <Input darkMode={state.dark} placeholder="what’s up , Sara ?" />
+        <PostIcon />
+        <Input placeholder="what’s up , Sara ?" />
       </InputWrapper>
       <SubmitWrapper>
         <Button width="120" height="32" font="16">
           Submit
         </Button>
       </SubmitWrapper>
-      <Title darkMode={state.dark}>Posts</Title>
+      <Title>Posts</Title>
       {data.tweets.edges.map((post) => (
         <Posts node={post.node} />
       ))}

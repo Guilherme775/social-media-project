@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-type Props = {
-    darkMode?: boolean;
-}
-
 export const Wrapper = styled.div`
     width: 100%;
     height: 100vh;
@@ -48,12 +44,12 @@ export const Image = styled.img`
     }
 `;
 
-export const FormContainer = styled.div<Props>`
+export const FormContainer = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
     place-items: center;
-    background-color: ${(props) => props.darkMode ? '#020024' : '#FFFFFF'};
+    background-color: ${({ theme }) => theme.wrapper};
 `;
 
 export const Form = styled.div`
@@ -63,11 +59,11 @@ export const Form = styled.div`
     row-gap: 24px;
 `;
 
-export const Title = styled.h1<Props>`
+export const Title = styled.h1`
     font-family: 'Roboto';
     font-size: 52px;
     font-weight: 700;
-    color: ${(props) => props.darkMode ? '#FFFFFF' : '#333237'};
+    color: ${({ theme }) => theme.text};
 `;
 
 export const Container = styled.div`
@@ -78,11 +74,11 @@ export const Container = styled.div`
     justify-content: space-between;
 `;
 
-export const Text = styled.p<Props>`
+export const Text = styled.p`
     font-family: 'Oxygen';
     font-size: 12px;
     font-weight: 700;
-    color: ${(props) => props.darkMode ? '#FFFFFF' : '#333237'};
+    color: ${({ theme }) => theme.text};
 `;
 
 export const BlueLink = styled(Link)`
