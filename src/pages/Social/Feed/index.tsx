@@ -23,6 +23,7 @@ type Props = {
   node: TweetsFragment_Posts$key;
 };
 
+// TODO: made pagination here
 const Posts = ({ node }: Props) => {
   const { id, author, description } = useFragment<TweetsFragment_Posts$key>(
     TweetsFragment,
@@ -50,7 +51,7 @@ export const Feed = ({ data }: QueryResponse) => {
       <Title>Make Post</Title>
       <InputWrapper>
         <PostIcon />
-        <Input placeholder="what’s up , Sara ?" />
+        <Input placeholder="what’s up?" />
       </InputWrapper>
       <SubmitWrapper>
         <Button width="120" height="32" font="16">
