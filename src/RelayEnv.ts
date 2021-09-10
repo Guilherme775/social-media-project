@@ -1,7 +1,7 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 import Cookie from 'js-cookie';
 
-const token = Cookie.get("token");
+const getToken = () => Cookie.get("token");
 
 const network = Network.create((operation, variables) =>
     fetch('http://localhost:4000/', {
@@ -9,7 +9,7 @@ const network = Network.create((operation, variables) =>
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${getToken()}`
         },
         body: JSON.stringify({
             query: operation.text,
